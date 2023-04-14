@@ -8,7 +8,7 @@ const ArticlesPage = async () => {
     <section className="container">
       <div className="">
         {posts.map((post) => (
-          <PostItem post={post} />
+          <PostItem key={post._id} post={post} />
         ))}
       </div>
     </section>
