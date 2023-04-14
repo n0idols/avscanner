@@ -1,22 +1,50 @@
 import { createClient, groq } from "next-sanity";
 import clientConfig from "./config/client-config";
-// import { Category, Product } from "@/types";
+import { Code } from "@/types/Code";
+import { Contact } from "@/types/Contact";
+import { Post } from "@/types/Post";
 
-// export async function getProducts(): Promise<Product[]> {
-//   return createClient(clientConfig).fetch(
-//     groq`*[_type == "product"]{
-//         _id,
-//         title,
-//         "slug": slug.current,
-//         categories,
-//         desc,
-//         feat,
-//         price,
-//         gallery,
-//         "mainImage": mainImage.asset->url,
-//     }`
-//   );
-// }
+export async function getCodes(): Promise<Code[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "code"] | order(_createdAt asc){
+        _id,
+        title,
+        code
+    }`
+  );
+}
+export async function getContacts(): Promise<Contact[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "contact"]{
+        _id,
+        title,
+        phone
+    }`
+  );
+}
+export async function getPosts(): Promise<Post[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "post"]{
+        _id,
+        title,
+        "slug": slug.current,
+        "mainImage": mainImage.asset->url,
+        excerpt,
+    }`
+  );
+}
+export async function getPost(slug: string): Promise<Post> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "post" && slug.current == $slug][0]{
+        _id,
+        title,
+        "slug": slug.current,
+        "mainImage": mainImage.asset->url,
+        body,
+    }`,
+    { slug }
+  );
+}
 
 // export async function getProduct(slug: string): Promise<Product> {
 //   return createClient(clientConfig).fetch(
