@@ -8,7 +8,7 @@ const ArticlePage = async ({ params }: any) => {
     <>
       <div className="">
         <Image
-          src={post.mainImage}
+          src={post.mainImage || "/images/placeholder.png"}
           width={0}
           height={0}
           sizes="100vw"
