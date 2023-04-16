@@ -1,4 +1,9 @@
-const PageHero = ({ title, subtitle }) => {
+type PageHeroProps = {
+  title: string;
+  subtitle: string;
+};
+
+const PageHero = ({ title, subtitle }: PageHeroProps) => {
   return (
     <header className="bg-gray-50 h-32 flex flex-col justify-center items-center mb-4">
       <h2 className="font-bold text-3xl">{title}</h2>
