@@ -6,7 +6,10 @@ import Link from "next/link";
 
 const PostItem = ({ post }: { post: Post }) => {
   return (
-    <div className="grid md:grid-cols-3 grid-cols-1 border mb-4 rounded">
+    <a
+      href={`/articles/${post.slug}`}
+      className="grid md:grid-cols-3 grid-cols-1 border mb-4 rounded"
+    >
       <div>
         <Image
           src={post.mainImage}
@@ -17,16 +20,14 @@ const PostItem = ({ post }: { post: Post }) => {
           alt={post.title}
         />
       </div>
-      <div className="col-span-2 flex flex-col justify-center space-y-4 px-4">
+      <div className="col-span-2 flex flex-col justify-center space-y-4 p-4">
         <h1 className="text-2xl font-bold">{post.title}</h1>
-        <p>{post.excerpt}...</p>
+        <p>{post.subtitle}</p>
         <div className="flex md:justify-end justify-center ">
-          <a href={`/articles/${post.slug}`} className="btn">
-            read more
-          </a>
+          <div className="btn">read more</div>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 export default PostItem;

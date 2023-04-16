@@ -1,6 +1,10 @@
+import { PortableTextBlock } from "sanity";
+import { Author } from "./Author";
+
 export type Post = {
   _id: string;
   title: string;
+  subtitle: string;
   mainImage: string;
   slug: {
     _type: string;
@@ -8,26 +12,8 @@ export type Post = {
   };
   excerpt: string;
 
-  author: {
-    _type: string;
-    _ref: string;
-    _key: string;
-  };
+  author: Author;
   publishedAt: string;
-  body: {
-    _type: string;
-    _key: string;
-    children: {
-      _type: string;
-      _key: string;
-      marks: string[];
-      text: string;
-    }[];
-    markDefs: {
-      _type: string;
-      _key: string;
-      href: string;
-    }[];
-    style: string;
-  }[];
+  body: PortableTextBlock[];
+  content: PortableTextBlock[];
 };

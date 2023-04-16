@@ -27,9 +27,10 @@ export async function getPosts(): Promise<Post[]> {
     groq`*[_type == "post"]{
         _id,
         title,
+        subtitle,
         "slug": slug.current,
         "mainImage": mainImage.asset->url,
-        excerpt,
+        
     }`
   );
 }
@@ -38,9 +39,16 @@ export async function getPost(slug: string): Promise<Post> {
     groq`*[_type == "post" && slug.current == $slug][0]{
         _id,
         title,
+        subtitle,
+        publishedAt,
+        "author": author->{
+          name,
+          "image": image.asset->url
+        },
         "slug": slug.current,
         "mainImage": mainImage.asset->url,
         body,
+        content
     }`,
     { slug }
   );

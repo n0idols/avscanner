@@ -10,6 +10,7 @@ export default defineType({
       title: "Title",
       type: "string",
     }),
+
     defineField({
       name: "slug",
       title: "Slug",
@@ -18,6 +19,11 @@ export default defineType({
         source: "title",
         maxLength: 96,
       },
+    }),
+    defineField({
+      name: "subtitle",
+      title: "Subtitle",
+      type: "string",
     }),
     defineField({
       name: "author",
@@ -44,11 +50,7 @@ export default defineType({
       title: "Published at",
       type: "datetime",
     }),
-    defineField({
-      name: "excerpt",
-      title: "excerpt",
-      type: "string",
-    }),
+
     defineField({
       name: "body",
       title: "Body",

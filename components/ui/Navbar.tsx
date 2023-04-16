@@ -2,12 +2,9 @@
 
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
+import Socials from "./Socials";
 
 export const navLinks = [
-  {
-    title: "home",
-    href: "/",
-  },
   {
     title: "news",
     href: "/",
@@ -32,7 +29,7 @@ const Navbar = () => {
   return (
     <>
       {/* <CartModal show={show} onClose={closeCart} /> */}
-      <nav className="bg-gray-100 border">
+      <nav className="bg-gray-100 border tracking-wide">
         {/* <nav className={pathname === "/" ? `bg-transparent` : `bg-black `}> */}
         <div className="container">
           <div className="flex justify-between">
@@ -67,7 +64,7 @@ const Navbar = () => {
               ))}
             </div>
             {/* secondary nav */}
-            <div className="grid place-items-center">tw ig fb</div>
+            <Socials />
           </div>
         </div>
       </nav>
