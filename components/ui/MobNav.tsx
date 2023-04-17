@@ -20,7 +20,7 @@ const navLinks = [
 
   {
     id: 2,
-    title: "radio codes",
+    title: "codes",
     href: "/codes",
     icon: <FaRegQuestionCircle />,
   },
