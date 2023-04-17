@@ -5,9 +5,9 @@ type PageHeroProps = {
 
 const PageHero = ({ title, subtitle }: PageHeroProps) => {
   return (
-    <header className="bg-gray-50 h-32 flex flex-col justify-center items-center mb-4">
-      <h2 className="font-bold text-3xl">{title}</h2>
-      <p>{subtitle}</p>
+    <header className="bg-gray-50 h-48 flex flex-col justify-center items-center mb-4 px-8 space-y-2">
+      <h2 className="font-bold text-4xl">{title}</h2>
+      <p className="text-lg">{subtitle}</p>
     </header>
   );
 };

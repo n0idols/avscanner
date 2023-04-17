@@ -3,6 +3,7 @@ import { Karla, Lora, Source_Sans_Pro } from "next/font/google";
 import Navbar from "@/components/ui/Navbar";
 import "../globals.css";
 import Footer from "@/components/ui/Footer";
+import MobNav from "@/components/ui/MobNav";
 
 export const metadata = {
   title: "AVScannerNews.com",
@@ -37,13 +38,12 @@ export default function RootLayout({
       className={`${karla.variable} + ${lora.variable} + ${source.variable}`}
     >
       <body>
-        <div id="drawer-root"></div>
-        <div id="mob-nav"></div>
-
+        <div id="contact-modal"></div>
         {/* <Providers> */}
         <Navbar />
         <div className="min-h-screen">{children}</div>
         <Footer />
+        <MobNav />
         {/* </Providers> */}
       </body>
     </html>

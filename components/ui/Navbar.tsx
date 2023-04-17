@@ -3,22 +3,29 @@
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import Socials from "./Socials";
+import { useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 export const navLinks = [
   {
+    id: 1,
     title: "news",
     href: "/",
   },
 
   {
+    id: 2,
     title: "radio codes",
     href: "/codes",
   },
   {
+    id: 3,
     title: "articles",
     href: "/articles",
   },
   {
+    id: 4,
     title: "contact",
     href: "/contact",
   },
@@ -26,44 +33,46 @@ export const navLinks = [
 
 const Navbar = () => {
   const pathname = usePathname();
+  const [show, setShow] = useState(false);
+  const toggleMenu = () => {
+    setShow(!show);
+  };
+
+  const closeContact = () => {
+    setShow(false);
+  };
   return (
     <>
-      {/* <CartModal show={show} onClose={closeCart} /> */}
-      <nav className="bg-gray-100 border tracking-wide">
+      <nav className="bg-gray-100  tracking-wide sticky top-0 shadow-lg z-10">
         {/* <nav className={pathname === "/" ? `bg-transparent` : `bg-black `}> */}
         <div className="container">
           <div className="flex justify-between">
             {" "}
             {/* mob button */}
-            {/* <button
-              onClick={toggleMenu}
-              className="flex items-center lg:hidden"
-            >
-              <Bars3Icon className="h-6 w-6" />
-            </button> */}
             {/* LOGO */}
             <div>
-              <a href="/" className="text-2xl font-extrabold  ">
+              <Link href="/" className="text-2xl font-extrabold">
                 <Logo />
-              </a>
+              </Link>
             </div>
             {/* Primary Nav */}
-            <div className="hidden items-center justify-center space-x-10 font-light lg:flex uppercase wide">
-              {navLinks.map((link, idx) => (
-                <a
-                  key={idx}
-                  href={link.href}
-                  className={
-                    pathname === link.href
-                      ? `border-b-4 border-red-400`
-                      : `border-b-4 border-transparent`
-                  }
-                >
+            <div className="hidden items-center justify-center space-x-10 font-light md:flex uppercase wide">
+              {navLinks.map((link) => (
+                <Link className="relative" key={link.id} href={link.href}>
+                  {link.href === pathname && (
+                    <motion.span
+                      layoutId="underline"
+                      className="absolute left-0 top-full block h-1 w-full bg-blue-900 rounded-xl "
+                    />
+                  )}
                   {link.title}
-                </a>
+                </Link>
               ))}
             </div>
             {/* secondary nav */}
+            {/* <button onClick={toggleMenu} className="flex items-center">
+              !!!
+            </button> */}
             <Socials />
           </div>
         </div>

@@ -1,15 +1,10 @@
-"use client";
 import { Post } from "@/types/Post";
 import Image from "next/image";
-import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 
 const PostItem = ({ post }: { post: Post }) => {
   return (
-    <a
-      href={`/articles/${post.slug}`}
-      className="grid md:grid-cols-3 grid-cols-1 border mb-4 rounded"
-    >
+    <div className="grid md:grid-cols-3 grid-cols-1 border mb-4 rounded">
       <div>
         <Image
           src={post.mainImage}
@@ -24,10 +19,12 @@ const PostItem = ({ post }: { post: Post }) => {
         <h1 className="text-2xl font-bold">{post.title}</h1>
         <p>{post.subtitle}</p>
         <div className="flex md:justify-end justify-center ">
-          <div className="btn">read more</div>
+          <Link className="btn" href={`/articles/${post.slug}`}>
+            read more
+          </Link>
         </div>
       </div>
-    </a>
+    </div>
   );
 };
 export default PostItem;

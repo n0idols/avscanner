@@ -2,12 +2,13 @@ import { getPost } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { format } from "date-fns";
+import PageWrapper from "@/components/ui/PageWrapper";
 
 const ArticlePage = async ({ params }: any) => {
   const post = await getPost(params.slug);
 
   return (
-    <>
+    <PageWrapper>
       <div className="bg-gray-100 h-32 flex justify-center items-center">
         <h2>featured business/advertisement here</h2>
       </div>
@@ -100,7 +101,7 @@ const ArticlePage = async ({ params }: any) => {
           </div>
         </div>
       </div>
-    </>
+    </PageWrapper>
   );
 };
 export default ArticlePage;

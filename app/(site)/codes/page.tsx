@@ -1,13 +1,15 @@
+import PageContainer from "@/components/ui/PageContainer";
 import PageHero from "@/components/ui/PageHero";
+import PageWrapper from "@/components/ui/PageWrapper";
 import { getCodes } from "@/sanity/sanity-utils";
 
 const CodesPage = async () => {
   const codes = await getCodes();
 
   return (
-    <>
+    <PageWrapper>
       <PageHero title="Radio Codes" subtitle="LASD most used codes" />
-      <section className="container">
+      <PageContainer>
         <div className="max-w-lg mx-auto">
           {codes.map((code) => (
             <div key={code._id} className="grid grid-cols-2 border-b my-2 px-2">
@@ -20,8 +22,8 @@ const CodesPage = async () => {
             </div>
           ))}
         </div>
-      </section>
-    </>
+      </PageContainer>
+    </PageWrapper>
   );
 };
 export default CodesPage;
