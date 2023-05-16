@@ -1,6 +1,6 @@
 type PageHeroProps = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
 };
 
 const PageHero = ({ title, subtitle }: PageHeroProps) => {

@@ -52,7 +52,10 @@ function Footer() {
             </div>
           </div>
           <div className="pt-4">
-            <a href="mailto:admin@avscannernews.com" className="flex space-x-2">
+            <a
+              href="mailto:admin@avscanne\rnews.com"
+              className="flex space-x-2"
+            >
               <FaRegEnvelope className={icons} />
               <h2>admin@avscannernews.com</h2>
             </a>
